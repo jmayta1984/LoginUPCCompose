@@ -1,5 +1,6 @@
 package pe.edu.logincompose.ui.signup
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,8 +15,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import pe.edu.logincompose.data.remote.UserRequest
+import pe.edu.logincompose.repository.UserRepository
+import pe.edu.logincompose.utils.Result
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +44,8 @@ fun SignUp() {
             onValueChange = { newValue ->
                 username.value = newValue
             },
-            placeholder = { Text("Username") }, modifier = Modifier.fillMaxWidth())
+            placeholder = { Text("Username") }, modifier = Modifier.fillMaxWidth()
+        )
 
         OutlinedTextField(
             value = password.value,
@@ -47,7 +53,8 @@ fun SignUp() {
                 password.value = newValue
             },
             visualTransformation = PasswordVisualTransformation(),
-            placeholder = { Text("Password") }, modifier = Modifier.fillMaxWidth())
+            placeholder = { Text("Password") }, modifier = Modifier.fillMaxWidth()
+        )
 
         OutlinedTextField(
             value = confirmPassword.value,
@@ -55,11 +62,23 @@ fun SignUp() {
                 confirmPassword.value = newValue
             },
             visualTransformation = PasswordVisualTransformation(),
-            placeholder = { Text("Confirm password") }, modifier = Modifier.fillMaxWidth())
+            placeholder = { Text("Confirm password") }, modifier = Modifier.fillMaxWidth()
+        )
 
+        val context = LocalContext.current
+        val userRepository = UserRepository()
+        val userRequest = UserRequest(username.value, password.value)
 
-        Button(onClick = { }) {
-            Text("Sign up")
+        Button(onClick = {
+
+            userRepository.register(userRequest) { result ->
+                if (result is Result.Success) {
+                    val id = result.data!!.id
+                    Toast.makeText(context, "$id", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }) {
+            Text("Register")
         }
 
         TextButton(onClick = { }) {
