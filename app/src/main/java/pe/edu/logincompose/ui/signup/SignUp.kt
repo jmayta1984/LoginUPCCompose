@@ -24,6 +24,8 @@ fun SignUp() {
 
     val password = remember { mutableStateOf("") }
 
+    val confirmPassword = remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier.fillMaxSize(),
 
@@ -46,6 +48,14 @@ fun SignUp() {
             },
             visualTransformation = PasswordVisualTransformation(),
             placeholder = { Text("Password") }, modifier = Modifier.fillMaxWidth())
+
+        OutlinedTextField(
+            value = confirmPassword.value,
+            onValueChange = { newValue ->
+                confirmPassword.value = newValue
+            },
+            visualTransformation = PasswordVisualTransformation(),
+            placeholder = { Text("Confirm password") }, modifier = Modifier.fillMaxWidth())
 
 
         Button(onClick = { }) {

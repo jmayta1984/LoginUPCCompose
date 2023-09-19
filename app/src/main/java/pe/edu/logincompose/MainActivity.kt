@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import pe.edu.logincompose.ui.login.Login
+import pe.edu.logincompose.ui.signup.SignUp
 import pe.edu.logincompose.ui.theme.LoginComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LoginComposeTheme {
                 // A surface container using the 'background' color from the theme
-                Login()
+                SignUp()
             }
         }
     }
