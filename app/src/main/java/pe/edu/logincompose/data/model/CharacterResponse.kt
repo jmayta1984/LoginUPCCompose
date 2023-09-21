@@ -7,7 +7,8 @@ data class Character(
     val name: String,
     val species: String,
     val gender: String,
-    val status: String
+    val status: String,
+    val image: String
 )
 
 data class CharacterResponse (
