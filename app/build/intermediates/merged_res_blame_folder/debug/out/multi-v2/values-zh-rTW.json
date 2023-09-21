@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "pe.edu.logincompose.app-mergeDebugResources-42:/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "pe.edu.logincompose.app-mergeDebugResources-45:/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "/Users/proyecto/.gradle/caches/transforms-3/0e2111bda17921a3e330548840228749/transformed/core-1.9.0/res/values-zh-rTW/values-zh-rTW.xml",

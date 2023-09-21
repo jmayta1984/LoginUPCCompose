@@ -11,6 +11,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -24,12 +26,11 @@ import pe.edu.logincompose.utils.Result
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUp() {
-    val username = remember { mutableStateOf("") }
+fun SignUp(viewModel: SignUpViewModel) {
+    val username: String by viewModel.username.observeAsState("")
+    val password: String by viewModel.password.observeAsState("")
+    val confirmPassword: String by viewModel.confirmPassword.observeAsState("")
 
-    val password = remember { mutableStateOf("") }
-
-    val confirmPassword = remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -40,43 +41,35 @@ fun SignUp() {
     ) {
         OutlinedTextField(
 
-            value = username.value,
+            value = username,
             onValueChange = { newValue ->
-                username.value = newValue
+                viewModel.updateUsername(newValue)
             },
             placeholder = { Text("Username") }, modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = password.value,
+            value = password,
             onValueChange = { newValue ->
-                password.value = newValue
+                viewModel.updatePassword(newValue)
             },
             visualTransformation = PasswordVisualTransformation(),
             placeholder = { Text("Password") }, modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = confirmPassword.value,
+            value = confirmPassword,
             onValueChange = { newValue ->
-                confirmPassword.value = newValue
+                viewModel.updateConfirmPassword(newValue)
             },
             visualTransformation = PasswordVisualTransformation(),
             placeholder = { Text("Confirm password") }, modifier = Modifier.fillMaxWidth()
         )
 
-        val context = LocalContext.current
-        val userRepository = UserRepository()
-        val userRequest = UserRequest(username.value, password.value)
 
         Button(onClick = {
 
-            userRepository.register(userRequest) { result ->
-                if (result is Result.Success) {
-                    val id = result.data!!.id
-                    Toast.makeText(context, "$id", Toast.LENGTH_SHORT).show()
-                }
-            }
+
         }) {
             Text("Register")
         }
@@ -91,5 +84,5 @@ fun SignUp() {
 @Preview
 @Composable
 fun SignUpPreview() {
-    SignUp()
+
 }
