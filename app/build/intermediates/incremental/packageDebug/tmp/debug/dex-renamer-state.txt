@@ -1,4 +1,4 @@
-#Tue Sep 19 15:41:30 PET 2023
+#Thu Sep 21 13:55:30 PET 2023
 base.0=/Users/proyecto/Development/2302/cc238/sw61/LoginCompose/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/proyecto/Development/2302/cc238/sw61/LoginCompose/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/Users/proyecto/Development/2302/cc238/sw61/LoginCompose/app/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex

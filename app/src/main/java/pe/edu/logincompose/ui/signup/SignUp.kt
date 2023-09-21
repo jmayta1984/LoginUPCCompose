@@ -31,7 +31,6 @@ fun SignUp(viewModel: SignUpViewModel) {
     val password: String by viewModel.password.observeAsState("")
     val confirmPassword: String by viewModel.confirmPassword.observeAsState("")
 
-
     Column(
         modifier = Modifier.fillMaxSize(),
 
@@ -68,8 +67,7 @@ fun SignUp(viewModel: SignUpViewModel) {
 
 
         Button(onClick = {
-
-
+            viewModel.register()
         }) {
             Text("Register")
         }
