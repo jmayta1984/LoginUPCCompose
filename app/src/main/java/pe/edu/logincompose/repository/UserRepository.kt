@@ -1,8 +1,8 @@
 package pe.edu.logincompose.repository
 
 import pe.edu.logincompose.data.remote.ApiClient
-import pe.edu.logincompose.data.remote.UserRequest
-import pe.edu.logincompose.data.remote.UserResponse
+import pe.edu.logincompose.data.model.UserRequest
+import pe.edu.logincompose.data.model.UserResponse
 import pe.edu.logincompose.data.remote.UserService
 import pe.edu.logincompose.utils.Result
 

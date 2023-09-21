@@ -2,7 +2,7 @@ package pe.edu.logincompose.ui.signup
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import pe.edu.logincompose.data.remote.UserRequest
+import pe.edu.logincompose.data.model.UserRequest
 import pe.edu.logincompose.repository.UserRepository
 
 class SignUpViewModel(val userRepository: UserRepository = UserRepository()) : ViewModel() {

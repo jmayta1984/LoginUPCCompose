@@ -1,4 +1,4 @@
-package pe.edu.logincompose.data.remote
+package pe.edu.logincompose.data.model
 
 data class UserRequest(
     val username: String,
