@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "pe.edu.logincompose.app-mergeDebugResources-54:/values/values.xml",
+            "outputFile": "pe.edu.logincompose.app-mergeDebugResources-57:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/proyecto/.gradle/caches/transforms-3/54d1e8efaadf0cf56acd3bc116ee75f0/transformed/lifecycle-runtime-2.6.2/res/values/values.xml",

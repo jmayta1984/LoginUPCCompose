@@ -18,10 +18,13 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,13 +42,22 @@ fun CharacterList(viewModel: CharacterListViewModel) {
     viewModel.getAll()
     LazyColumn {
         items(characters) { character ->
-            CharacterCard(character)
+            CharacterCard(character,
+                delete = {
+                    viewModel.delete(character)
+                },
+                insert = {
+                    viewModel.save(character)
+                }
+            )
         }
     }
 }
 
 @Composable
-fun CharacterCard(character: Character) {
+fun CharacterCard(character: Character, delete: () -> Unit, insert: () -> Unit) {
+    val isFavorite = remember { mutableStateOf(false) }
+    isFavorite.value = character.isFavorite
     Card(modifier = Modifier.padding(8.dp)) {
         Row(
             modifier = Modifier
@@ -82,8 +94,20 @@ fun CharacterCard(character: Character) {
                     )
                 }
             }
-            IconButton(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
-                Icon(Icons.Filled.Star, null)
+            IconButton(onClick = {
+                if (isFavorite.value) {
+                    delete()
+                } else {
+                    insert()
+                }
+                isFavorite.value = !isFavorite.value
+            }, modifier = Modifier.weight(1f)) {
+                Icon(
+                    Icons.Filled.Star,
+                    null,
+                    tint = if (isFavorite.value) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.onSurface
+                )
             }
         }
     }

@@ -8,7 +8,8 @@ data class Character(
     val species: String,
     val gender: String,
     val status: String,
-    val image: String
+    val image: String,
+    var isFavorite: Boolean
 )
 
 data class CharacterResponse (

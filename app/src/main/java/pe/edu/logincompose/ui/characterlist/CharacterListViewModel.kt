@@ -14,8 +14,18 @@ class CharacterListViewModel(
     fun getAll() {
         characterRepository.getAll { result ->
             if (result is Result.Success) {
-                _characters.value = result.data!!.characters
+                _characters.value = result.data!!
             }
         }
     }
+
+    fun delete(character: Character){
+        characterRepository.delete(character)
+
+    }
+
+    fun save(character: Character){
+        characterRepository.save(character)
+    }
+
 }
