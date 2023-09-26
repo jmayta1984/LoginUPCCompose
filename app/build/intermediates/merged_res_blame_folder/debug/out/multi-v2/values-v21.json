@@ -4,7 +4,7 @@
             "outputFile": "pe.edu.logincompose.app-mergeDebugResources-57:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/proyecto/.gradle/caches/transforms-3/3931ad7eb9dd4136015071a12e5891dc/transformed/core-1.10.0/res/values-v21/values-v21.xml",
+                    "source": "/Users/proyecto/.gradle/caches/transforms-3/723741d7a113a365c7e74d1353a44842/transformed/core-1.10.0/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
