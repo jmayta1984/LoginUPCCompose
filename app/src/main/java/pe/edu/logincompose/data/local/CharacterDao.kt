@@ -7,11 +7,13 @@ import androidx.room.Query
 
 @Dao
 interface CharacterDao {
-    @Insert
-    fun save(character: CharacterEntity)
+
 
     @Query("select * from characters where id=:id")
     fun getById(id: Int): CharacterEntity?
+
+    @Insert
+    fun save(character: CharacterEntity)
 
     @Delete
     fun delete(character: CharacterEntity)

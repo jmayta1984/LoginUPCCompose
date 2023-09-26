@@ -19,13 +19,14 @@ class CharacterListViewModel(
         }
     }
 
-    fun delete(character: Character){
-        characterRepository.delete(character)
-
-    }
-
     fun save(character: Character){
         characterRepository.save(character)
     }
+
+    fun delete(character: Character){
+        characterRepository.delete(character)
+    }
+
+
 
 }

@@ -30,10 +30,10 @@ class CharacterRepository(
 
                     val characters = response.body()!!.characters
 
-                    characters.forEach {   character ->
+                    characters.forEach { character ->
                         character.isFavorite = characterDao.getById(character.id) != null
                     }
-                    callback(Result.Success(data = response.body()!!.characters ))
+                    callback(Result.Success(data = response.body()!!.characters))
                 }
             }
 
@@ -44,14 +44,30 @@ class CharacterRepository(
         })
     }
 
-    fun delete(character: Character){
-        characterDao.delete(CharacterEntity(character.id))
-        character.isFavorite = false
+    fun save(character: Character) {
+        characterDao.save(
+            CharacterEntity(
+                character.id,
+                character.name,
+                character.status,
+                character.gender,
+                character.image
+            )
+        )
+        character.isFavorite = true
     }
 
-    fun save(character: Character){
-        characterDao.save(CharacterEntity(character.id))
-        character.isFavorite = true
+    fun delete(character: Character) {
+        characterDao.delete(
+            CharacterEntity(
+                character.id,
+                character.name,
+                character.status,
+                character.gender,
+                character.image
+            )
+        )
+        character.isFavorite = false
     }
 
     fun getById(id: String, callback: (Result<Character>) -> Unit) {

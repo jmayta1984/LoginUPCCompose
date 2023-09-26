@@ -106,7 +106,7 @@ fun CharacterCard(character: Character, delete: () -> Unit, insert: () -> Unit) 
                     Icons.Filled.Star,
                     null,
                     tint = if (isFavorite.value) MaterialTheme.colorScheme.primary
-                    else MaterialTheme.colorScheme.onSurface
+                    else MaterialTheme.colorScheme.inverseOnSurface
                 )
             }
         }
